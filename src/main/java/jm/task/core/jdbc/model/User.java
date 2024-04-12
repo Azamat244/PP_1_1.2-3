@@ -1,15 +1,14 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table (name = "User")   //показываем с какой таблице привязываем класс
 @Entity                  //данный класс будет отображать таблицу в БД
 public class User {
 
-    @Id                 // показываем что поле PK
+    @Id                     // показываем что поле PK
+    @Column (name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column (name = "name")            //@Column показывает к какому столбцу привязвываем поле
