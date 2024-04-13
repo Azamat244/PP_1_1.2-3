@@ -1,8 +1,5 @@
 package jm.task.core.jdbc.util;
 
-
-
-
 import jm.task.core.jdbc.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -14,12 +11,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public class Util {
     // реализуйте настройку соеденения с БД
 
     private static SessionFactory sessionFactory;
-
+    private static final Logger logger = Logger.getLogger(Util.class.getName());
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
@@ -44,7 +42,7 @@ public class Util {
                         .build();
 
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-                System.out.println("Соединение с БД установлено");
+                logger.info("Соединение с БД установлено");
             } catch (Exception e) {
                 e.printStackTrace();
             }
