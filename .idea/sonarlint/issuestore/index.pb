@@ -45,3 +45,10 @@ Q.idea/sonarlint/securityhotspotstore/c/e/ce475d05bd26c61cb3fe8be2f39dbc4a98cc5e
 Q.idea/sonarlint/securityhotspotstore/8/c/8ca9d994c9918b797bc9ba8824095a0f0fe7cee0,d\4\d4a8858afc40f4f78596424e723688108220138b
 Å
 Q.idea/sonarlint/securityhotspotstore/6/2/62e2127fc6d01cf3cb67b7cbf130e294c5b10f40,9\1\91ba903774ddc91c0afaa2b99e7b525c76e6e1f5
+`
+0src/main/java/jm/task/core/jdbc/dao/UserDao.java,9\8\98537719f21e123909a7e7550027eec65eb0241d
+m
+=src/main/java/jm/task/core/jdbc/dao/UserDaoHibernateImpl.java,f\6\f61bc8cc983455b547d554cfd3bddb383ad8d3bd
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
