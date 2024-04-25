@@ -16,7 +16,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     //create
-    public void createUsersTable() throws RuntimeException, SQLException {
+    public void createUsersTable()  {
         //создание таблицы
         Connection connection = Util.getConnection();
         PreparedStatement preparedStatement = null;
@@ -34,16 +34,24 @@ public class UserDaoJDBCImpl implements UserDao {
         }
         finally {
             if (preparedStatement != null) {
-                preparedStatement.close();
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
             if (connection != null) {
-                connection.close();
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
 
-    public void dropUsersTable() throws SQLException {
+    public void dropUsersTable()  {
         //полностью удаляет таблицу
         Connection connection = Util.getConnection();
         PreparedStatement preparedStatement = null;
@@ -56,15 +64,23 @@ public class UserDaoJDBCImpl implements UserDao {
         }
         finally {
             if (preparedStatement != null) {
-                preparedStatement.close();
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
             if (connection != null) {
-                connection.close();
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-    public void saveUser(String name, String lastName, byte age) throws SQLException {
+    public void saveUser(String name, String lastName, byte age)  {
         //создание пользователя в таблице create
         Connection connection = Util.getConnection();
         PreparedStatement preparedStatement = null;
@@ -82,16 +98,24 @@ public class UserDaoJDBCImpl implements UserDao {
         }
         finally {
             if (preparedStatement != null) {
-                preparedStatement.close();
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
             if (connection != null) {
-                connection.close();
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
     }
 
-    public void removeUserById(long id) throws SQLException {
+    public void removeUserById(long id)  {
         //удаление пользователя по ай ди delete
         Connection connection = Util.getConnection();
         PreparedStatement preparedStatement = null;
@@ -107,14 +131,22 @@ public class UserDaoJDBCImpl implements UserDao {
         }
         finally {
             if (preparedStatement != null) {
-                preparedStatement.close();
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             } if (connection != null) {
-                connection.close();
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-    public List<User> getAllUsers() throws SQLException {
+    public List<User> getAllUsers()  {
         // получение списка пользователей  read
         Connection connection = Util.getConnection();
         List<User> usersList = new ArrayList<>();
@@ -136,7 +168,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 usersList.add(user1);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } finally {
             if (statement != null) {
                 try {
@@ -145,12 +177,17 @@ public class UserDaoJDBCImpl implements UserDao {
                     e.printStackTrace(); // Обработка исключения
                 }
             } if (connection != null) {
-                connection.close();
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+
+                }
             }
         } return usersList;
     }
 
-    public void cleanUsersTable() throws SQLException {
+    public void cleanUsersTable()  {
         //очищает таблицу от данных
         Connection connection = Util.getConnection();
         PreparedStatement preparedStatement = null;
@@ -159,14 +196,25 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+
         }
         finally {
             if (preparedStatement != null) {
-                preparedStatement.close();
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+
+                }
             }
             if (connection != null) {
-                connection.close();
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+
+                }
             }
         }
     }

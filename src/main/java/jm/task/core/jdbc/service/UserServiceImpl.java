@@ -14,28 +14,28 @@ public class UserServiceImpl implements UserService {
     UserDao userDaoHibernate = new UserDaoHibernateImpl();
 
 
-    public void createUsersTable() throws SQLException {
-    userDaoHibernate.createUsersTable();
+    public void createUsersTable()  {
+            userDaoHibernate.createUsersTable();
     }
 
-    public void dropUsersTable() throws SQLException {
+    public void dropUsersTable()  {
         userDaoHibernate.dropUsersTable();
     }
 
-    public void saveUser(String name, String lastName, byte age) throws SQLException {
+    public void saveUser(String name, String lastName, byte age)  {
         userDaoHibernate.saveUser(name,lastName,age);
         logger.info("User с именем — "+ name + " добавлен в базу данны");
     }
 
-    public void removeUserById(long id) throws SQLException {
+    public void removeUserById(long id)  {
         userDaoHibernate.removeUserById(id);
     }
 
-    public List<User> getAllUsers() throws SQLException {
+    public List<User> getAllUsers()  {
         return userDaoHibernate.getAllUsers();
     }
 
-    public void cleanUsersTable() throws SQLException {
+    public void cleanUsersTable()  {
         userDaoHibernate.cleanUsersTable();
     }
 
