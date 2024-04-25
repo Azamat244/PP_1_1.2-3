@@ -14,10 +14,16 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 public class Util {
+
+    public static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+    public static final String DB_URL = "jdbc:mysql://localhost:3306/root";
+    public static final String DB_USERNAME = "2443254";
+    public static final String DB_PASSWORD = "2443254";
     // реализуйте настройку соеденения с БД
 
     private static SessionFactory sessionFactory;
     private static final Logger logger = Logger.getLogger(Util.class.getName());
+
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
@@ -25,10 +31,10 @@ public class Util {
 
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
                 Properties settings = new Properties();
-                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/root");
-                settings.put(Environment.USER, "2443254");
-                settings.put(Environment.PASS, "2443254");
+                settings.put(Environment.DRIVER, DB_DRIVER);
+                settings.put(Environment.URL, DB_URL);
+                settings.put(Environment.USER, DB_USERNAME);
+                settings.put(Environment.PASS, DB_PASSWORD);
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
@@ -49,24 +55,18 @@ public class Util {
         }
         return sessionFactory;
     }
+
+
+    public static Connection getConnection() {
+        Connection connection = null;
+        try {
+            Class.forName(DB_DRIVER);
+            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+            System.out.println("Соединение с БД установлено");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Соединение с БД не установлено");
+        }
+        return connection;
+    }
 }
-
-
-
-//    public static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
-//    public static final String DB_URL = "jdbc:mysql://localhost:3306/root";
-//    public static final String DB_USERNAME = "2443254";
-//    public static final String DB_PASSWORD = "2443254";
-//
-//    public static Connection getConnection(){
-//        Connection connection = null;
-//        try {
-//            Class.forName(DB_DRIVER);
-//            connection = DriverManager.getConnection(DB_URL,DB_USERNAME,DB_PASSWORD);
-//            System.out.println("Соединение с БД установлено");
-//        } catch (ClassNotFoundException | SQLException e) {
-//            System.out.println("Соединение с БД не установлено");
-//        }
-//        return connection;
-//    }
 

@@ -13,6 +13,7 @@ public class UserServiceImpl implements UserService {
     private static final Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
     UserDao userDaoHibernate = new UserDaoHibernateImpl();
 
+
     public void createUsersTable() throws SQLException {
     userDaoHibernate.createUsersTable();
     }
