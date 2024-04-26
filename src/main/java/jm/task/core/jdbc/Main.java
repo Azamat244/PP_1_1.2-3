@@ -8,9 +8,12 @@ import jm.task.core.jdbc.util.Util;
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args)  {
         Util.getSessionFactory();
         UserDao userDao = new UserDaoHibernateImpl();
+
+//        UserDao userDao = new UserDaoJDBCImpl();
+
 
         userDao.createUsersTable();
 
